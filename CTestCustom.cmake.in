@@ -1,0 +1,50 @@
+# CTest custom configuration template
+# This file is processed by CMake to generate CTestCustom.cmake in the build directory
+
+# Customize test output
+set(CTEST_CUSTOM_MAXIMUM_NUMBER_OF_ERRORS 50)
+set(CTEST_CUSTOM_MAXIMUM_NUMBER_OF_WARNINGS 50)
+
+# Customize test timeout
+set(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 1048576)  # 1MB
+set(CTEST_CUSTOM_MAXIMUM_FAILED_TEST_OUTPUT_SIZE 2097152)  # 2MB
+
+# Custom warning suppressions (add patterns to ignore specific warnings)
+set(CTEST_CUSTOM_WARNING_EXCEPTION
+    "warning: unused parameter"
+    "warning: unused variable"
+    # Add more patterns as needed
+)
+
+# Custom error suppressions
+set(CTEST_CUSTOM_ERROR_EXCEPTION
+    # Add patterns for errors to ignore if needed
+)
+
+# Memory check suppressions
+set(CTEST_CUSTOM_MEMCHECK_IGNORE
+    # Add test names to ignore for memory checking
+)
+
+# Coverage exclusions
+set(CTEST_CUSTOM_COVERAGE_EXCLUDE
+    # Exclude external libraries
+    ".*/build/_deps/.*"
+    ".*/build/.*"
+    # Exclude test files from coverage
+    ".*/tests/.*"
+    ".*/perf/.*"
+    # Standard library headers
+    "/usr/.*"
+    "/Applications/Xcode.app/.*"
+)
+
+# Pre-test script
+set(CTEST_CUSTOM_PRE_TEST
+    # Commands to run before tests
+)
+
+# Post-test script  
+set(CTEST_CUSTOM_POST_TEST
+    # Commands to run after tests
+)
